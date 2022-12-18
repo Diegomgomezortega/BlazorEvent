@@ -1,0 +1,40 @@
+﻿@using BlazorEvent.Pages
+@inherits LayoutComponentBase
+
+<div class="page">
+    <NavMenuHorizontalComponent TitleName="@nameEvent"
+                                SwitchToPage="ViewPage">
+
+    </NavMenuHorizontalComponent>
+
+    <main style="d-flex justify-content-between align-items-center">
+        <article class="content px-4">
+           @* @Body*@
+           <CarouselComponent Components="@types"
+                              IndexPage="@position"  >
+           </CarouselComponent>
+        </article>
+    </main>
+</div>
+
+@code{
+
+
+    Type[] types =
+            {
+            typeof(FetchData),
+            typeof(Counter),
+            typeof(SurveyPrompt)
+        };
+    public string nameEvent { get; set; }
+    public int position { get; set; }
+    protected override async Task OnInitializedAsync()
+    {
+        nameEvent = "SPA in Carousel";
+    }
+    public void ViewPage(int pageNumber)
+    {
+        position=pageNumber;
+        
+    }
+}

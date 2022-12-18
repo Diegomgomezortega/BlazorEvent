@@ -1,0 +1,24 @@
+﻿@page "/"
+<NavMenuHorizontalComponent TitleName="@title">
+
+</NavMenuHorizontalComponent>
+
+<CarouselComponent Components="types">
+
+</CarouselComponent>
+@code{
+    public string title { get; set; }
+    Type[] types =
+            {
+            typeof(Counter),
+            typeof(SurveyPrompt),
+            typeof(FetchData)
+        };
+
+    protected override async Task OnInitializedAsync()
+    {
+        title = "Desde el index";
+
+    }
+}
+
